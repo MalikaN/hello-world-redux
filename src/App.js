@@ -32,10 +32,10 @@ class App extends Component{
         return(
             <div>
                <label>{this.props.value}</label><br/>
-               {/* {this.state.isChangeVal? */}
-                <button onClick={this.props.onButtonClick}>Click</button>
-                {/* <button onClick={this.props.onButtonClick}>Exit</button> */}
-               {/* } */}
+               {this.props.isChange?
+                <button onClick={this.props.onShowButtonClick}>Click</button>:
+                <button onClick={this.props.onHideButtonClick}>Exit</button>
+               }
               
             </div>
         )
@@ -44,14 +44,15 @@ class App extends Component{
 
 function mapStateToProps(state){
     return{
-        value:state.text
+        value:state.text,
+        isChange:state.isChangeVal
     }
 }
 
 function mapDispatchToProps(dispatch){
     return{
-        onButtonClick : () => dispatch(showContent),
-        onButtonClick : () => dispatch(hideContent)
+        onShowButtonClick : () => dispatch(showContent),
+        onHideButtonClick : () => dispatch(hideContent)
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(App);
