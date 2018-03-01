@@ -1,1 +1,6 @@
-import {connect} from 'react-redux';
+import {createStore} from 'redux';
+import {showReducer} from'./Reducer';
+
+const store =createStore(showReducer);
+
+export default store;
